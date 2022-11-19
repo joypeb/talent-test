@@ -1,0 +1,19 @@
+{{>head}}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col" style="text-align: center">이름</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#talents}}
+        <tr style="cursor: pointer" onclick="location.href='/talent/name/{{name}}';">
+            <td style="text-align: center">{{name}}</td>
+        </tr>
+
+    {{/talents}}
+    </tbody>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+server:
+  servlet:
+    encoding:
+      force-response: true
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect

@@ -1,0 +1,22 @@
+{{>head}}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th style="padding-left: 20px" scope="col">이름</th>
+        <th scope="col">상품</th>
+        <th style="padding-right: 5px" scope="col">개수</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#talents}}
+        <tr>
+            <td style="padding-left: 20px">{{name}}</td>
+            <td>{{article}}</td>
+            <td style="padding-right: 5px">{{entity}}</td>
+        </tr>
+    {{/talents}}
+    </tbody>
+</table>
+</div>
+</body>
+</html>
