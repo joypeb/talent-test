@@ -25,11 +25,10 @@ public class TalentService {
     private final TalentRepository talentRepository;
     private final JdbcTemplate jdbcTemplate;
 
-    String[] articleArr = {"", "비눗방울 장난감", "슬라임 장난감", "푸쉬팝", "거짓말탐지기", "짹짹이 장난감", "할리갈리",
-            "의자의 탑 게임", "스포츠 핑거게임", "폴리몽키게임", "RC미니카", "공룡장난감","젤리","떡꼬치","팝콘치킨",
-            "동물풍선머리띠세트", "축구공", "아동용핸드백", "어린이용성경책", "LCD패드", "핫팩", "모찌인형(대)", "모찌인형(소)",
-            "배드민턴", "반지갑", "설빙", "GS25", "베라", "그립톡", "스티커", "스케치북", "필통", "곱창밴드", "십자수",
-            "보석십자수", "레고", "한복키링", "곰돌이 볼펜"};
+    String[] articleArr = {"", "비눗방울 장난감", "슬라임 장난감", "푸쉬팝", "거짓말탐지기", "짹짹이 장난감", "할리갈리", "의자의 탑 게임", "스포츠 핑거게임", "폴리몽키게임", "RC미니카",
+            "공룡장난감", "젤리", "떡꼬치", "팝콘치킨", "동물풍선머리띠세트", "축구공", "아동용핸드백", "어린이용성경책", "LCD패드", "핫팩",
+            "모찌인형(대)", "모찌인형(소)", "배드민턴", "반지갑", "설빙", "GS25", "베라", "그립톡", "스티커", "스케치북",
+            "필통", "곱창밴드", "십자수", "보석십자수", "레고", "한복키링", "곰돌이 볼펜"};
 
 
     @Autowired
@@ -44,7 +43,7 @@ public class TalentService {
         String[] returnStr = new String[2];
 
 
-        String[]nums = articleNums.split(" ");
+        String[] nums = articleNums.split(" ");
 
         log.info("배열화 된 nums " + Arrays.toString(nums));
 
@@ -57,7 +56,7 @@ public class TalentService {
             int parseNum = Integer.parseInt(num);
             try {
                 if (parseNum > 37) throw new NumberFormatException();
-                articleMap.put(articleArr[parseNum], articleMap.getOrDefault(articleArr[parseNum],0)+1);
+                articleMap.put(articleArr[parseNum], articleMap.getOrDefault(articleArr[parseNum], 0) + 1);
             } catch (Exception e) {
                 log.error("숫자의 범위 확인");
                 log.error(e.getMessage());
@@ -71,7 +70,7 @@ public class TalentService {
 
         List<String> articleList = Arrays.asList(articleArr);
 
-        for(Map.Entry<String, Integer> entry : articleMap.entrySet()) {
+        for (Map.Entry<String, Integer> entry : articleMap.entrySet()) {
             talent = Talent.builder()
                     .num(articleList.indexOf(entry.getKey()))
                     .article(entry.getKey())
@@ -83,7 +82,7 @@ public class TalentService {
 
         List<Talent> talents = talentRepository.saveAll(list);
 
-        log.info("talents = " +talents.toString());
+        log.info("talents = " + talents.toString());
 
         returnStr[0] = "list";
         returnStr[1] = "";
@@ -137,7 +136,7 @@ public class TalentService {
                         talent.setEntity(rs.getInt("entity"));
                         return talent;
                     }
-                },name
+                }, name
         );
         return talents;
     }
