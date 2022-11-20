@@ -10,4 +10,6 @@ public interface TalentRepository extends JpaRepository<Talent, Integer> {
     List<Talent> findAllByOrderByName();
     List<Talent> findAllByOrderByArticle();
 
+    int countByNameContaining(String name);
+
 }

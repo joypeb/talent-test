@@ -36,6 +36,14 @@ public class TalentController {
     @PostMapping("/registration")
     public String addRegistration(TalentDto talentDto, Model model) {
         log.info("registraion controller : " + talentDto.getName() + ", " + talentDto.getNums());
+
+        boolean nameSearch = talentService.searchName(talentDto.getName());
+
+        if(!nameSearch) {
+            model.addAttribute("errorMsg","이름중복");
+            return "error";
+        }
+
         String[] result = talentService.addRegistraion(talentDto.getName(),talentDto.getNums());
 
         if(result[1].equals("")) {

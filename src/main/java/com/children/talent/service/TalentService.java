@@ -25,6 +25,50 @@ public class TalentService {
     private final TalentRepository talentRepository;
     private final JdbcTemplate jdbcTemplate;
 
+    /*public String articleList(int num) {
+        switch (num) {
+            case 1 :
+                return "비눗방울 장난감";
+            case 2:
+                return "슬라임 장난감";
+                case 1231 : return "푸쉬팝";
+                case 1231 : return "거짓말탐지기";
+                case 1231 : return "짹짹이 장난감";
+                case 1231 : return "할리갈리";
+                case 1231 : return "의자의 탑 게임";
+                case 1231 : return "스포츠 핑거게임";
+                case 1231 : return "폴리몽키게임";
+                case 1231 : return "RC미니카";
+            case 1231 : return "공룡장난감";
+                case 1231 : return "젤리";
+                case 1231 : return "떡꼬치";
+                case 1231 : return "팝콘치킨";
+                case 1231 : return "동물풍선머리띠세트";
+                case 1231 : return "축구공";
+                case 1231 : return "아동용핸드백";
+                case 1231 : return "어린이용성경책";
+                case 1231 : return "LCD패드";
+                case 1231 : return "핫팩";
+            case 1231 : return "모찌인형(대)";
+            case 1231 : return "모찌인형(소)";
+            case 1231 : return "배드민턴";
+            case 1231 : return "반지갑";
+            case 1231 : return "설빙";
+            case 1231 : return "GS25";
+            case 1231 : return "베라";
+            case 1231 : return "그립톡";
+            case 1231 : return "스티커";
+            case 1231 : return "스케치북",
+            case 1231 : return "필통";
+            case 1231 : return "곱창밴드";
+            case 1231 : return "십자수";
+            case 1231 : return "보석십자수";
+            case 1231 : return "레고";
+            case 1231 : return "한복키링";
+            case 1231 : return "곰돌이 볼펜";
+        }
+    }*/
+
     String[] articleArr = {"", "비눗방울 장난감", "슬라임 장난감", "푸쉬팝", "거짓말탐지기", "짹짹이 장난감", "할리갈리", "의자의 탑 게임", "스포츠 핑거게임", "폴리몽키게임", "RC미니카",
             "공룡장난감", "젤리", "떡꼬치", "팝콘치킨", "동물풍선머리띠세트", "축구공", "아동용핸드백", "어린이용성경책", "LCD패드", "핫팩",
             "모찌인형(대)", "모찌인형(소)", "배드민턴", "반지갑", "설빙", "GS25", "베라", "그립톡", "스티커", "스케치북",
@@ -156,5 +200,15 @@ public class TalentService {
                 }
         );
         return talents;
+    }
+
+    public boolean searchName(String name) {
+        int result = talentRepository.countByNameContaining(name);
+
+        if(result == 0) {
+            return true;
+        } else{
+            return false;
+        }
     }
 }
